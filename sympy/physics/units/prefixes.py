@@ -6,7 +6,7 @@ Module defining unit prefixe class and some constants.
 Constant dict for SI and binary prefixes are defined as PREFIXES and
 BIN_PREFIXES.
 """
-from sympy import Expr, sympify, Number
+from sympy import Expr, sympify
 
 
 class Prefix(Expr):
@@ -73,9 +73,6 @@ class Prefix(Expr):
     __repr__ = __str__
 
     def __mul__(self, other):
-        if not isinstance(other, Prefix):
-            return super(Prefix, self).__mul__(other)
-
         fact = self.scale_factor * other.scale_factor
 
         if fact == 1:
